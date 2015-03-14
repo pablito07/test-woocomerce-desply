@@ -89,9 +89,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 
 	<div class="wc-proceed-to-checkout">
-
+		
 		<?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
+	</div>
 
+	<div class="coupons">
+		<?php if ( WC()->cart->coupons_enabled() ) { ?>
+			<div class="coupon">
+				<label for="coupon_code"><?php _e( 'Coupon', 'woocommerce' ); ?>:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="button" name="apply_coupon" value="<?php _e( 'Apply Coupon', 'woocommerce' ); ?>" />
+				<?php do_action( 'woocommerce_cart_coupon' ); ?>
+			</div>
+		<?php } ?>
+		<?php do_action( 'woocommerce_cart_actions' ); ?>
+		<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 	</div>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>

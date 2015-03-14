@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
-
+$heading = esc_html( apply_filters( 'woocommerce_product_description_heading', __( 'Price', 'woocommerce' ) ) );
 ?>
 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-
+	<h4><?php echo $heading; ?></h4>
 	<p class="price"><?php echo $product->get_price_html(); ?></p>
 
 	<meta itemprop="price" content="<?php echo $product->get_price(); ?>" />
